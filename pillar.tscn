@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ysqi4jinx2vx"]
+
+[ext_resource type="PackedScene" uid="uid://d06vnva5omaup" path="res://FirePillar.glb" id="1_x4200"]
+[ext_resource type="Texture2D" uid="uid://drx83m1cj61rt" path="res://FirePillar_TextureGimp1.png" id="2_kprfg"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w8kkb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_325gl"]
+albedo_color = Color(0.197937, 0.197937, 0.197937, 1)
+albedo_texture = ExtResource("2_kprfg")
+uv1_scale = Vector3(0.49, 0.49, 0.49)
+
+[node name="Pillar" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="FirePillar" parent="MeshInstance3D" instance=ExtResource("1_x4200")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02429, 0.09484, 1.3529)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.867023, -0.194398, 0.458781, 0.023965, 0.903418, 0.428092, -0.497691, 0.38216, -0.778625, 3.05953, 16.7395, -11.4069)
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, -0.266104, 0.105227, 0.152349)
+mesh = SubResource("PlaneMesh_w8kkb")
+surface_material_override/0 = SubResource("StandardMaterial3D_325gl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.912263, 5.60997e-08, 0.409605, 0.328863, 0.596141, 0.732438, -0.244182, 0.80288, -0.543837, 4.15305, 20.0634, -9.43746)
+light_color = Color(1, 0.93, 0.93, 1)
+shadow_enabled = true
